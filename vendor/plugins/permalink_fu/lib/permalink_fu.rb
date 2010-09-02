@@ -61,7 +61,10 @@ module PermalinkFu
 protected
   def create_unique_permalink
     if send(self.class.permalink_field).to_s.empty?
-      send("#{self.class.permalink_field}=", create_permalink_for(self.class.permalink_attributes))
+      # send("#{self.class.permalink_field}=", create_permalink_for(self.class.permalink_attributes))
+      #
+      name = create_permalink_for(self.class.permalink_attributes)
+      send("#{self.class.permalink_field}=", (Time.now.to_f * 10000).to_i.to_s(32) + ('aaa'..'zzz').to_a.rand + "-" + name.to_s)
     end
     base       = send(self.class.permalink_field)
     counter    = 1
