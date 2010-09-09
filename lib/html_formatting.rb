@@ -5,7 +5,7 @@ module HtmlFormatting
   def format_attributes
     self.class.formatted_attributes.each do |attr|
       raw    = read_attribute attr
-      textilized = ::RedCloth.new(raw, [:hard_breaks])
+      textilized = ::RedCloth.new(raw.to_s, [:hard_breaks])
       textilized.hard_breaks = true if textilized.respond_to?("hard_breaks=")
       write_attribute "#{attr}_html", white_list_sanitizer.sanitize(textilized.to_html)
     end
