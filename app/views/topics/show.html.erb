@@ -103,8 +103,6 @@
     </span>
     <% end %>
     <span class="posts"><%= I18n.t 'txt.count_posts', :count => post.user.posts.size, :num => number_with_delimiter(post.user.posts.size) %></span>
-
-
     <% if logged_in? && post.editable_by?(current_user) -%>
     <p>
       <span class="edit">
@@ -113,8 +111,6 @@
       </span>
     </p>
     <% end -%>
-
-
   </td>
   <td class="body entry-content" id="post-body-<%= post.id %>">
 
